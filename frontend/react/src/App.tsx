@@ -240,34 +240,36 @@ function AppContent() {
       ]
     },
     {
-      id: 'system',
-      label: t.system,
-      labelEn: t.system,
-      icon: '⚙️',
-      path: '/system',
-      subItems: [
-        {
-          id: 'logs',
-          label: t.logs,
-          labelEn: t.logs,
-          icon: '📝',
-          path: '/system/logs'
-        },
-        {
-          id: 'settings',
-          label: t.settings,
-          labelEn: t.settings,
-          icon: '🔧',
-          path: '/system/settings'
-        }
-      ]
-    },
-    {
       id: 'manage',
       label: t.manage,
       labelEn: t.manage,
       icon: '🛠️',
-      path: '/manage'
+      path: '/manage',
+      subItems: [
+        {
+          id: 'system',
+          label: t.system,
+          labelEn: t.system,
+          icon: '⚙️',
+          path: '/system',
+          subItems: [
+            {
+              id: 'logs',
+              label: t.logs,
+              labelEn: t.logs,
+              icon: '📝',
+              path: '/system/logs'
+            },
+            {
+              id: 'settings',
+              label: t.settings,
+              labelEn: t.settings,
+              icon: '🔧',
+              path: '/system/settings'
+            }
+          ]
+        }
+      ]
     }
   ];
 
