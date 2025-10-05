@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from
 import axios from 'axios';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Dashboard } from './components/Dashboard/Dashboard';
+import { ManagePage } from './components/ManagePage/ManagePage';
 import './App.css';
 import './components/Layout/Layout.css';
 
@@ -41,6 +42,7 @@ const translations = {
     system: 'מערכת',
     logs: 'לוגים',
     settings: 'הגדרות',
+    manage: 'ניהול',
     // Quick Actions
     addNewAdmin: 'הוסף מנהל',
     viewLogs: 'צפה בלוגים',
@@ -79,6 +81,7 @@ const translations = {
     system: 'System',
     logs: 'Logs',
     settings: 'Settings',
+    manage: 'Manage',
     // Quick Actions
     addNewAdmin: 'Add Admin',
     viewLogs: 'View Logs',
@@ -258,6 +261,13 @@ function AppContent() {
           path: '/system/settings'
         }
       ]
+    },
+    {
+      id: 'manage',
+      label: t.manage,
+      labelEn: t.manage,
+      icon: '🛠️',
+      path: '/manage'
     }
   ];
 
@@ -457,6 +467,7 @@ function AppContent() {
             <Route path="/permissions/access" element={<div className="page-placeholder">🔒 {t.accessControl}</div>} />
             <Route path="/system/logs" element={<div className="page-placeholder">📝 {t.logs}</div>} />
             <Route path="/system/settings" element={<div className="page-placeholder">🔧 {t.settings}</div>} />
+            <Route path="/manage" element={<ManagePage language={language} theme={theme} />} />
             <Route path="*" element={<Dashboard language={language} theme={theme} stats={stats} activities={activities} quickActions={quickActions} />} />
           </Routes>
         </main>
