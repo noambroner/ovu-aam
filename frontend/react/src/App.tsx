@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { ManagePage } from './components/ManagePage/ManagePage';
+import { APIUIEndpoints } from './components/APIUIEndpoints/APIUIEndpoints';
+import { APIFunctions } from './components/APIFunctions/APIFunctions';
 import './App.css';
 import './components/Layout/Layout.css';
 
@@ -43,6 +45,9 @@ const translations = {
     logs: 'לוגים',
     settings: 'הגדרות',
     manage: 'ניהול',
+    api: 'API',
+    apiUIEndpoints: 'UI Endpoints',
+    apiFunctions: 'פונקציות',
     // Quick Actions
     addNewAdmin: 'הוסף מנהל',
     viewLogs: 'צפה בלוגים',
@@ -82,6 +87,9 @@ const translations = {
     logs: 'Logs',
     settings: 'Settings',
     manage: 'Manage',
+    api: 'API',
+    apiUIEndpoints: 'UI Endpoints',
+    apiFunctions: 'Functions',
     // Quick Actions
     addNewAdmin: 'Add Admin',
     viewLogs: 'View Logs',
@@ -246,6 +254,29 @@ function AppContent() {
       icon: '🛠️',
       path: '/manage',
       subItems: [
+        {
+          id: 'api',
+          label: t.api,
+          labelEn: t.api,
+          icon: '📡',
+          path: '/api',
+          subItems: [
+            {
+              id: 'api-ui',
+              label: t.apiUIEndpoints,
+              labelEn: t.apiUIEndpoints,
+              icon: '🌐',
+              path: '/api/ui'
+            },
+            {
+              id: 'api-functions',
+              label: t.apiFunctions,
+              labelEn: t.apiFunctions,
+              icon: '⚡',
+              path: '/api/functions'
+            }
+          ]
+        },
         {
           id: 'system',
           label: t.system,
@@ -470,6 +501,8 @@ function AppContent() {
             <Route path="/system/logs" element={<div className="page-placeholder">📝 {t.logs}</div>} />
             <Route path="/system/settings" element={<div className="page-placeholder">🔧 {t.settings}</div>} />
             <Route path="/manage" element={<ManagePage language={language} theme={theme} />} />
+            <Route path="/api/ui" element={<APIUIEndpoints language={language} theme={theme} appType="aam" />} />
+            <Route path="/api/functions" element={<APIFunctions language={language} theme={theme} appType="aam" />} />
             <Route path="*" element={<Dashboard language={language} theme={theme} stats={stats} activities={activities} quickActions={quickActions} />} />
           </Routes>
         </main>
